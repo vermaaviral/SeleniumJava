@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 12.079 s <<< FAILURE! - in TestSuite
+second(testCases.firstTest)  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: expected [2] but found [1]
+	at testCases.firstTest.second(firstTest.java:17)
+
