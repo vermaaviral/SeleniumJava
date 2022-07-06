@@ -1,6 +1,8 @@
 package testCases;
 
+import com.Pages.BasePage;
 import com.utils.ConfigReader;
+import com.utils.YamlReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,8 +18,9 @@ import java.net.URL;
 
 public class Base {
 
-    public ConfigReader configReader= new ConfigReader();
+    public static ConfigReader configReader= new ConfigReader();
     public static ThreadLocal<WebDriver> tldriver= new ThreadLocal<>();
+    public BasePage page;
 
     @BeforeMethod(alwaysRun=true)
     @Parameters(value={"browser"})
@@ -41,7 +44,9 @@ public class Base {
                 break;
         }
 
-        getDriver().get("https://www.google.com/");
+        page=new BasePage(getDriver());
+        getDriver().get(configReader.getProp("url"));
+        getDriver().manage().window().maximize();
     }
 
     @AfterMethod(alwaysRun=true)

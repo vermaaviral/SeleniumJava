@@ -1,0 +1,5 @@
+HomePage:
+  MyAccount: "//a[@title='My Account']"
+  Login: "//a[normalize-space()='Login']"
+  CurrencyButton: "//button[@class='btn btn-link dropdown-toggle']"
+  CurrencyValue: "//button[contains(text(),'replaceCurrency')]"
