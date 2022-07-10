@@ -1,0 +1,8 @@
+Test:
+  url: "https://naveenautomationlabs.com/opencart/"
+  username: "a@b.com"
+  password: "test@123"
+Prod:
+  url: "https://naveenautomationlabs.com/opencart/"
+  username: "test@prod.com"
+  password: "test@123"

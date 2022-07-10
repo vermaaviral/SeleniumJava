@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class BasePage {
 
     protected WebDriver driver;
-    protected static YamlReader yamlReader=new YamlReader("src/resources/ObjectRepository.yaml");
+    protected YamlReader yamlReader=new YamlReader("src/resources/ObjectRepository.yaml");
 
     public BasePage(WebDriver driver){
         this.driver=driver;

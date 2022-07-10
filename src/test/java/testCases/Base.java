@@ -20,6 +20,8 @@ public class Base {
 
     public static ConfigReader configReader= new ConfigReader();
     public static ThreadLocal<WebDriver> tldriver= new ThreadLocal<>();
+    protected YamlReader data=new YamlReader("src/resources/TestData.yaml");
+    protected String env=configReader.getProp("env");
     public BasePage page;
 
     @BeforeMethod(alwaysRun=true)
@@ -45,7 +47,7 @@ public class Base {
         }
 
         page=new BasePage(getDriver());
-        getDriver().get(configReader.getProp("url"));
+        getDriver().get(data.getValue(env+".url"));
         getDriver().manage().window().maximize();
     }
 
