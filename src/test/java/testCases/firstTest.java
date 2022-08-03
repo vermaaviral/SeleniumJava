@@ -3,7 +3,7 @@ package testCases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class firstTest extends Base{
+public class firstTest extends BaseTest{
 
     @Test(groups ={"Regression"})
     public void first(){

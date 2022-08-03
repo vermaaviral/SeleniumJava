@@ -8,10 +8,13 @@ import org.openqa.selenium.WebElement;
 public class BasePage {
 
     protected WebDriver driver;
-    protected YamlReader yamlReader=new YamlReader("src/resources/ObjectRepository.yaml");
+    protected YamlReader objectReader=new YamlReader("src/resources/ObjectRepository.yaml");
+    protected WebDriverWait wait;
+
 
     public BasePage(WebDriver driver){
         this.driver=driver;
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
     }
 
     public String getPageTitle() {
@@ -37,4 +40,26 @@ public class BasePage {
         By element= By.id(yamlReader.getValue(path));
         return driver.findElement(element);
     }
+
+    public void addLog(String status, String message){
+        switch (status){
+            case "pass": ExtentFactory.getInstance().getExtent().log(Status.PASS,message);
+                        break;
+            case "fail": ExtentFactory.getInstance().getExtent().log(Status.FAIL,message);
+                        break;
+            case "skip": ExtentFactory.getInstance().getExtent().log(Status.SKIP,message);
+                        break;
+        }
+    }
+
+    public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
+
+        try {
+            return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driver);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
