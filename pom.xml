@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.13.1</junit.version>
     <java.version>11</java.version>
-    <groups>Smoke</groups>
+    <groups>Regression</groups>
     <threadCount>10</threadCount>
   </properties>
 
@@ -46,6 +46,12 @@
       <version>5.2.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -69,7 +75,7 @@
             <properties>
               <property>
                 <name>listener</name>
-                <value>com.listeners.RetryListener</value>
+                <value>com.listeners.RetryListener, com.listeners.ReportingListener</value>
               </property>
             </properties>
           </configuration>
