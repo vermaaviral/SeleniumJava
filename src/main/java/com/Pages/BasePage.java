@@ -1,9 +1,15 @@
 package com.Pages;
 
+import com.aventstack.extentreports.Status;
+import com.utils.CommonUtil;
+import com.utils.ExtentFactory;
 import com.utils.YamlReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasePage {
 
@@ -21,35 +27,25 @@ public class BasePage {
         return driver.getTitle();
     }
 
-    public WebElement getElementByXpath(String path){
-        By element= By.xpath(yamlReader.getValue(path));
-        return driver.findElement(element);
-    }
-
-    public WebElement getElementByCss(String path){
-        By element= By.cssSelector(yamlReader.getValue(path));
-        return driver.findElement(element);
-    }
-
-    public WebElement getElementByName(String path){
-        By element= By.name(yamlReader.getValue(path));
-        return driver.findElement(element);
-    }
-
-    public WebElement getElementById(String path){
-        By element= By.id(yamlReader.getValue(path));
-        return driver.findElement(element);
-    }
-
     public void addLog(String status, String message){
-        switch (status){
-            case "pass": ExtentFactory.getInstance().getExtent().log(Status.PASS,message);
-                        break;
-            case "fail": ExtentFactory.getInstance().getExtent().log(Status.FAIL,message);
-                        break;
-            case "skip": ExtentFactory.getInstance().getExtent().log(Status.SKIP,message);
-                        break;
-        }
+
+        try {
+            switch (status) {
+                case "pass":
+                    ExtentFactory.getInstance().getExtent().log(Status.PASS, message);
+                    break;
+                case "fail":
+                    ExtentFactory.getInstance().getExtent().log(Status.FAIL, message);
+                    break;
+                case "skip":
+                    ExtentFactory.getInstance().getExtent().log(Status.SKIP, message);
+                    break;
+            }
+        }catch (Exception e){}
+    }
+
+    public void moveToHomePage(){
+        getInstance(CommonUtil.class).clickElement("HomePage.homeLogo");
     }
 
     public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
@@ -60,6 +56,13 @@ public class BasePage {
             e.printStackTrace();
             return null;
         }
+    }
+
+    protected void addSleep(long time){
+        try{
+            Thread.sleep(time);
+            addLog("pass", "Halt Execution for: " + (time/1000) + "seconds");
+        }catch (Exception e){}
     }
 
 }

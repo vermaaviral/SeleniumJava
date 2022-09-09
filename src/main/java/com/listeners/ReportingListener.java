@@ -33,6 +33,7 @@ public class ReportingListener implements ISuiteListener, ITestListener {
         setup = ExtentSetup.setupExtentReport(formattedDate);
     }
 
+
     @Override
     public void onFinish(ISuite suite) {
         ISuiteListener.super.onFinish(suite);
@@ -74,5 +75,6 @@ public class ReportingListener implements ISuiteListener, ITestListener {
         if(result.wasRetried())
             setup.removeTest(ExtentFactory.getInstance().getExtent());
     }
+
 
 }

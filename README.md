@@ -40,9 +40,17 @@ mvn clean test
 ```
 * Trigger test suite on firefox with selenium grid
 ```
-mvn -Dbrowser=firfox -Dselenium_grid=true -Dselenium_hub=http://<DNS>:<port> clean test
+mvn -Dbrowser=firefox -Dselenium_grid=true -Dselenium_hub=http://<DNS>:<port> clean test
 ```
 * Trigger test suite based on multiple tags
 ```
 mvn -Dgroups=Regression,Smoke clean test
 ```
+
+###Tests
+1. Login To account
+2. Invalid Login creds
+3. Shop with Login and logout
+4. Shop without login
+5. Myorders after login
+6. Change currency and verify value

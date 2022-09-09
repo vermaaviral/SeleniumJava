@@ -1,5 +1,55 @@
+# Locator can be added in below format  "LocatorType : LocatorValue". For now added xpath, css and tagName as supported value
+
 HomePage:
-  MyAccount: "//a[@title='My Account']"
-  Login: "//a[normalize-space()='Login']"
-  CurrencyButton: "//button[@class='btn btn-link dropdown-toggle']"
-  CurrencyValue: "//button[contains(text(),'replaceCurrency')]"
+  icons: "xpath : //li/a[@title='OPTION']"
+  homeLogo: "xpath : //img[@title='naveenopencart']"
+  myAccountOptions: "xpath : //a[normalize-space()='OPTION']"
+  currencyButton: "xpath : //button[@class='btn btn-link dropdown-toggle']"
+  currencyValue: "xpath : //button[contains(text(),'OPTION')]"
+  cartTotal: "id : cart-total"
+  navOption: "xpath : //li/a[contains(text(),'OPTION')]"
+  featuredProducts: "xpath : //h3[contains(text(),'Featured')]/following::h4/a"
+  featuredProductPrice: "xpath : //h3[contains(text(),'Featured')]/following::h4/a[contains(text(),'OPTION')]/../following-sibling::p[@class='price']"
+  searchText: "name : search"
+  searchButton: "xpath : //input[@name='search']/following-sibling::span"
+
+AccountPage:
+  operationList: "xpath : //a[@class='list-group-item'][contains(text(),'OPTION')]"
+  inputEmail: "id : input-email"
+  inputPassword: "id : input-password"
+  loginButton: "xpath : //input[@type='submit']"
+  continuButon: "xpath : //a[@class='btn btn-primary']"
+  optionHeadings: "xpath : //h2[contains(text(),'OPTION')]"
+  logOutText: "xpath : //h1[contains(text(),'Account Logout')]"
+  warningText: "xpath : //div[contains(text(),'Warning:')]"
+
+SearchProductPage:
+  searchHeading: "xpath : //h1[contains(text(),'Search - ')]"
+  searchedProductNames: "xpath : //div[@class='product-thumb']/descendant::h4/a"
+
+ProductDetailsPage:
+  quantity: "id : input-quantity"
+  addToCart: "id : button-cart"
+
+CartPage:
+  checkoutButton: "xpath : //a[contains(text(), 'Checkout')]"
+  shopButton: "xpath : //a[contains(text(), 'Continue Shopping')]"
+
+CheckoutPage:
+  checkoutPanels: "xpath : //a[contains(text(),'OPTION')]"
+  checkoutOptions: "xpath : //input[@value='OPTION']"
+  checkoutButtons: "id : button-OPTION"
+  billingDetails: "id : input-payment-OPTION"
+  billingDeliveryCheckbox: "name: shipping_address"
+  billingOption: "xpath : //input[@name='payment_address' and @value='OPTION']"
+  deliveryOption: "xpath : //input[@name='shipping_address' and @value='OPTION']"
+  addressDropdown: "xpath : //select[@name='address_id']"
+  deliveryDetails: "id : input-shipping-OPTION"
+  deliveryComment: "name : comment"
+  paymentMethod: "xpath : //input[@name='payment_method' and @value='OPTION']"
+  paymentAgree: "name : agree"
+  orderConfirmation: "xpath : //h1[contains(text(), 'Your order has been placed')]"
+
+AddressBookPage:
+  allAddress: "xpath : //tr/td[1]"
+

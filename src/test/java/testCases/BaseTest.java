@@ -1,6 +1,5 @@
 package testCases;
 
-import com.Pages.AgentDesktopPage;
 import com.Pages.BasePage;
 import com.utils.*;
 import org.openqa.selenium.WebDriver;
@@ -25,15 +24,9 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun=true)
     public void tearDown(ITestResult result) {
-        page.getInstance(AgentDesktopPage.class).signOut();
         ExtentFactory.getInstance().removeExtent();
         DriverFactory.getInstance().getDriver().quit();
         DriverFactory.getInstance().removeDriver();
     }
 
-    public void waitForTime(long time){
-        try{
-            Thread.sleep(time);
-        }catch (InterruptedException e){}
-    }
 }
