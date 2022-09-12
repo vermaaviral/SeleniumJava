@@ -10,23 +10,27 @@ public class HomePage extends BasePage{
     }
 
     public void changeCurrency(String currency){
-        getInstance(CommonUtil.class).clickElement("HomePage.currencyButton");
-        getInstance(CommonUtil.class).clickElement("HomePage.currencyValue", currency);
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("HomePage.currencyButton");
+        util.clickElement("HomePage.currencyValue", currency);
     }
 
-    public void searchProduct(String productName){
+    public SearchProductPage searchProduct(String productName){
+        CommonUtil util = new CommonUtil(driver);
         moveToHomePage();
-        getInstance(CommonUtil.class).sendKeysToElement("HomePage.searchText", productName);
-        getInstance(CommonUtil.class).clickElement("HomePage.searchButton");
-
+        util.sendKeysToElement("HomePage.searchText", productName);
+        util.clickElement("HomePage.searchButton");
+        return new SearchProductPage(driver);
     }
 
     public String getCartTotal(){
-        String total = getInstance(CommonUtil.class).getElement("HomePage.cartTotal").getText().split("-")[1].trim();
+        CommonUtil util = new CommonUtil(driver);
+        String total = util.getElement("HomePage.cartTotal").getText().split("-")[1].trim();
         return total;
     }
 
     public void openMenuOption(String option){
-        getInstance(CommonUtil.class).clickElement("HomePage.icons", option);
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("HomePage.icons", option);
     }
 }

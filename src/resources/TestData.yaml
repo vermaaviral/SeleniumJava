@@ -4,7 +4,7 @@ Test:
   password: "test@123"
   invalidPassword: "abc123"
   searchProduct: "macbook"
-  shopProduct: "iphone"
+  shopProduct: "ipod"
   guestDetails: "Roger,Federer,guest@test.com,111111111"
   guestAddress: "Addressline1,place,222222,India,Bihar"
   deliveryDetails: "Rafael,Nadal,AddressLine,place2,222223,India,Telangana"

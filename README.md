@@ -27,10 +27,11 @@ which generates a report at the end of test suite excluding the retried test cas
 | Variable Name | Description                                                         | Default Value  |
 |---------------|---------------------------------------------------------------------|----------------|
 | selenium_grid | If test suite need to execute on grid, set this to true             | false          |
-| selenium_hub  | If using grid, then this variable needs to be set                   | localhost:4444 |
+| selenium_hub  | If using grid, then this variable needs to be set                   | http://localhost:4444/wd/hub |
 | env           | Test Data will be picked from file based on environment             | test           |
 | groups        | Tests tagged with matching value of this variable will get executed | Regression     |
 | browser       | Browser on which user desired to run test suite                     | chrome         |
+| threadCount | To run TCs in parallel, provide value greater than 1 | 1 |
 
 ### Execution Commands:
 
@@ -38,19 +39,15 @@ which generates a report at the end of test suite excluding the retried test cas
 ```
 mvn clean test
 ```
-* Trigger test suite on firefox with selenium grid
+* Trigger test suite with selenium grid with parallel execution with 5 threads
 ```
-mvn -Dbrowser=firefox -Dselenium_grid=true -Dselenium_hub=http://<DNS>:<port> clean test
+mvn -DthreadCount=5 -Dselenium_grid=true -Dselenium_hub=http://<DNS>:<port> clean test
 ```
 * Trigger test suite based on multiple tags
 ```
 mvn -Dgroups=Regression,Smoke clean test
 ```
-
-###Tests
-1. Login To account
-2. Invalid Login creds
-3. Shop with Login and logout
-4. Shop without login
-5. Myorders after login
-6. Change currency and verify value
+* Trigger test suite execution on Firefox browser
+```
+mvn -browser=Firefox clean test
+```

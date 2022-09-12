@@ -9,12 +9,15 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public void proceedToCheckout(){
-        getInstance(CommonUtil.class).clickElement("CartPage.checkoutButton");
+    public CheckoutPage proceedToCheckout(){
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("CartPage.checkoutButton");
+        return new CheckoutPage(driver);
     }
 
     public void proceedToShopping(){
-        getInstance(CommonUtil.class).clickElement("CartPage.shopButton");
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("CartPage.shopButton");
     }
 
 }

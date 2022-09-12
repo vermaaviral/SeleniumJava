@@ -4,16 +4,14 @@ import com.aventstack.extentreports.Status;
 import com.utils.CommonUtil;
 import com.utils.ExtentFactory;
 import com.utils.YamlReader;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class BasePage {
 
-    protected WebDriver driver;
+    public WebDriver driver;
     protected YamlReader objectReader=new YamlReader("src/resources/ObjectRepository.yaml");
     protected WebDriverWait wait;
 
@@ -28,34 +26,25 @@ public class BasePage {
     }
 
     public void addLog(String status, String message){
-
+        CommonUtil util = new CommonUtil(driver);
         try {
             switch (status) {
                 case "pass":
-                    ExtentFactory.getInstance().getExtent().log(Status.PASS, message);
+                    ExtentFactory.getInstance().getExtent().log(Status.PASS, message + "<br /> Browser Session Id:" +util.getsessionId());
                     break;
                 case "fail":
-                    ExtentFactory.getInstance().getExtent().log(Status.FAIL, message);
+                    ExtentFactory.getInstance().getExtent().log(Status.FAIL, message + "<br /> Browser Session Id:" +util.getsessionId());
                     break;
                 case "skip":
-                    ExtentFactory.getInstance().getExtent().log(Status.SKIP, message);
+                    ExtentFactory.getInstance().getExtent().log(Status.SKIP, message + "<br /> Browser Session Id:" +util.getsessionId());
                     break;
             }
         }catch (Exception e){}
     }
 
     public void moveToHomePage(){
-        getInstance(CommonUtil.class).clickElement("HomePage.homeLogo");
-    }
-
-    public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
-
-        try {
-            return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(this.driver);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("HomePage.homeLogo");
     }
 
     protected void addSleep(long time){

@@ -2,7 +2,9 @@ package com.utils;
 
 import com.Pages.BasePage;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -143,17 +145,20 @@ public class CommonUtil extends BasePage {
 
     public void clickElement(String path){
         WebElement element = getElement(path);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         addLog("pass", "Clicked on "+ path.split("\\.")[1] + " in " + path.split("\\.")[0] + " page");
     }
 
     public void clickElement(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         addLog("pass", "Clicked on element: " + element);
     }
 
     public void clickElement(String path, String option){
         WebElement element = getElement(path, option);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         addLog("pass", "Clicked on "+ option + " in " + path.split("\\.")[1] + " in " + path.split("\\.")[0] + " page");
     }
@@ -267,5 +272,11 @@ public class CommonUtil extends BasePage {
         Boolean status = getElement(path, option).isEnabled();
         addLog("pass", "Enable Status is " + status + " for option " +  option);
         return status;
+    }
+
+    public String getsessionId(){
+        SessionId s = ((ChromeDriver) driver).getSessionId();
+        return s.toString();
+
     }
 }

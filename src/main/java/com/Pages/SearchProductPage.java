@@ -14,12 +14,14 @@ public class SearchProductPage extends BasePage{
     }
 
     public String getSearchedProductName(){
-        String product = getInstance(CommonUtil.class).getElement("SearchProductPage.searchHeading").getText().split("-")[1].trim();
+        CommonUtil util = new CommonUtil(driver);
+        String product = util.getElement("SearchProductPage.searchHeading").getText().split("-")[1].trim();
         return product;
     }
 
     public void matchSearchedProduct(String productName){
-        List<WebElement> products = getInstance(CommonUtil.class).getElements("SearchProductPage.searchedProductNames");
+        CommonUtil util = new CommonUtil(driver);
+        List<WebElement> products = util.getElements("SearchProductPage.searchedProductNames");
         for(WebElement product: products){
             String name = product.getText().toLowerCase();
             Assert.assertTrue(name.matches("(.*)"+productName.toLowerCase()+"(.*)"));
@@ -27,9 +29,11 @@ public class SearchProductPage extends BasePage{
         addLog("pass", "Matching Product displayed contains the searched keyword " + productName );
     }
 
-    public void openSearchedProduct(String productName){
-        List<WebElement> products = getInstance(CommonUtil.class).getElements("SearchProductPage.searchedProductNames");
+    public ProductDetailsPage openSearchedProduct(String productName){
+        CommonUtil util = new CommonUtil(driver);
+        List<WebElement> products = util.getElements("SearchProductPage.searchedProductNames");
         WebElement product =  products.get(0);
-        getInstance(CommonUtil.class).clickElement(product);
+        util.clickElement(product);
+        return new ProductDetailsPage(driver);
     }
 }

@@ -10,11 +10,13 @@ public class ProductDetailsPage extends BasePage{
     }
 
     public void addToCart(){
-        getInstance(CommonUtil.class).clickElement("ProductDetailsPage.addToCart");
+        CommonUtil util = new CommonUtil(driver);
+        util.clickElement("ProductDetailsPage.addToCart");
         addSleep(2000);
     }
 
     public void updateQuantity(String quantity){
-        getInstance(CommonUtil.class).sendKeysToElement("ProductDetailsPage.quantity", quantity);
+        CommonUtil util = new CommonUtil(driver);
+        util.sendKeysToElement("ProductDetailsPage.quantity", quantity);
     }
 }
