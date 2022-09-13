@@ -4,6 +4,7 @@ import com.Pages.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -275,8 +276,7 @@ public class CommonUtil extends BasePage {
     }
 
     public String getsessionId(){
-        SessionId s = ((ChromeDriver) driver).getSessionId();
+        SessionId s = ((RemoteWebDriver) driver).getSessionId();
         return s.toString();
-
     }
 }

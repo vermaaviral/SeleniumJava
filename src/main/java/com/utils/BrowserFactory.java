@@ -32,15 +32,15 @@ public class BrowserFactory {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--disable-notifications");
-                    if(configReader.getProp("selenium_grid").equals("true"))
-                        driver = new RemoteWebDriver(new URL(configReader.getProp("selenium_hub")), chromeOptions);
+                    if(configReader.getProp("seleniumGrid").equals("true"))
+                        driver = new RemoteWebDriver(new URL(configReader.getProp("seleniumHub")), chromeOptions);
                     else
                         driver = WebDriverManager.chromedriver().capabilities(chromeOptions).create();
                     break;
                 case "firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    if(configReader.getProp("selenium_grid").equals("true"))
-                        driver = new RemoteWebDriver(new URL(configReader.getProp("selenium_hub")), firefoxOptions);
+                    if(configReader.getProp("seleniumGrid").equals("true"))
+                        driver = new RemoteWebDriver(new URL(configReader.getProp("seleniumHub")), firefoxOptions);
                     else
                         driver = WebDriverManager.firefoxdriver().capabilities(firefoxOptions).create();
                     break;

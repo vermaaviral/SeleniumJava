@@ -26,12 +26,12 @@ which generates a report at the end of test suite excluding the retried test cas
 
 | Variable Name | Description                                                         | Default Value  |
 |---------------|---------------------------------------------------------------------|----------------|
-| selenium_grid | If test suite need to execute on grid, set this to true             | false          |
-| selenium_hub  | If using grid, then this variable needs to be set                   | http://localhost:4444/wd/hub |
+| seleniumGrid  | If test suite need to execute on grid, set this to true             | false          |
+| seleniumHub   | If using grid, then this variable needs to be set                   | http://localhost:4444/wd/hub |
 | env           | Test Data will be picked from file based on environment             | test           |
 | groups        | Tests tagged with matching value of this variable will get executed | Regression     |
 | browser       | Browser on which user desired to run test suite                     | chrome         |
-| threadCount | To run TCs in parallel, provide value greater than 1 | 1 |
+| threadCount   | To run TCs in parallel, provide value greater than 1 | 1 |
 
 ### Execution Commands:
 
@@ -50,4 +50,21 @@ mvn -Dgroups=Regression,Smoke clean test
 * Trigger test suite execution on Firefox browser
 ```
 mvn -browser=Firefox clean test
+```
+
+### Reporting
+Once execution is completed, test-output folder will be created if not present already in project directory. 
+For each execution and new folder will be created with timestamp suite is triggered which contains
+ExtentReport and in case of failure screenshots for failed TCs.
+
+### Notes
+* In case of any Tc fails, it will be retired one more time as per current counter.
+This can be increase to any desired value update counter in RetryAnalyzer file
+* docker-compose.yml is present in resources folder to launch selenium grid with chrome node with 2 max sessions
+```
+docker-compose up -d 
+```
+To scale the nodes
+```
+docker-compose up -d --scale chrome=2
 ```
