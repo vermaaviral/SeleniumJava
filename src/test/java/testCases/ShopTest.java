@@ -15,7 +15,7 @@ public class ShopTest extends BaseTest{
 
         SearchProductPage searchProductPage = homePage.searchProduct(data.getValue(env+".shopProduct"));
         ProductDetailsPage productDetailsPage = searchProductPage.openSearchedProduct(data.getValue(env+".shopProduct"));
-        productDetailsPage.updateQuantity("1");
+        productDetailsPage.updateQuantity(data.getValue((env+".quantity")));
         productDetailsPage.addToCart();
         homePage.openMenuOption("Shopping Cart");
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();
@@ -35,7 +35,7 @@ public class ShopTest extends BaseTest{
 
         SearchProductPage searchProductPage = homePage.searchProduct(data.getValue(env+".shopProduct"));
         ProductDetailsPage productDetailsPage = searchProductPage.openSearchedProduct(data.getValue(env+".shopProduct"));
-        productDetailsPage.updateQuantity("1");
+        productDetailsPage.updateQuantity(data.getValue((env+".quantity")));
         productDetailsPage.addToCart();
         homePage.openMenuOption("Shopping Cart");
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();
@@ -54,7 +54,7 @@ public class ShopTest extends BaseTest{
 
         SearchProductPage searchProductPage = homePage.searchProduct(data.getValue(env+".shopProduct"));
         ProductDetailsPage productDetailsPage = searchProductPage.openSearchedProduct(data.getValue(env+".shopProduct"));
-        productDetailsPage.updateQuantity("1");
+        productDetailsPage.updateQuantity(data.getValue((env+".quantity")));
         productDetailsPage.addToCart();
         homePage.openMenuOption("Shopping Cart");
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();
@@ -77,7 +77,7 @@ public class ShopTest extends BaseTest{
         accountPage.login(data.getValue(env+".username"),data.getValue(env+".password"));
         SearchProductPage searchProductPage = homePage.searchProduct(data.getValue(env+".shopProduct"));
         ProductDetailsPage productDetailsPage = searchProductPage.openSearchedProduct(data.getValue(env+".shopProduct"));
-        productDetailsPage.updateQuantity("1");
+        productDetailsPage.updateQuantity(data.getValue((env+".quantity")));
         productDetailsPage.addToCart();
         homePage.openMenuOption("Shopping Cart");
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();
@@ -101,7 +101,7 @@ public class ShopTest extends BaseTest{
         accountPage.login(data.getValue(env+".username"),data.getValue(env+".password"));
         SearchProductPage searchProductPage = homePage.searchProduct(data.getValue(env+".shopProduct"));
         ProductDetailsPage productDetailsPage = searchProductPage.openSearchedProduct(data.getValue(env+".shopProduct"));
-        productDetailsPage.updateQuantity("1");
+        productDetailsPage.updateQuantity(data.getValue((env+".quantity")));
         productDetailsPage.addToCart();
         homePage.openMenuOption("Shopping Cart");
         CheckoutPage checkoutPage = cartPage.proceedToCheckout();

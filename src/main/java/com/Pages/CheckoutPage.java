@@ -16,7 +16,7 @@ public class CheckoutPage extends BasePage{
         if(status==false)
             util.clickElement("CheckoutPage.checkoutOptions", option);
         util.clickElement("CheckoutPage.checkoutButtons", "account");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     public void selectCheckoutAsReturningCustomer(String username, String password){
@@ -59,7 +59,7 @@ public class CheckoutPage extends BasePage{
         enterAddress(address);
         deliverDetailsCheckbox(option);
         util.clickElement("CheckoutPage.checkoutButtons", "guest");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     private void selectBillingDetailsOptionForLoginUser(String option){
@@ -67,7 +67,7 @@ public class CheckoutPage extends BasePage{
         Boolean status = util.elementIsSelected("CheckoutPage.billingOption", option);
         if(!status)
             util.clickElement("CheckoutPage.billingOption", option);
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     private void selectDeliveryDetailsOptionForLoginUser(String option){
@@ -75,7 +75,7 @@ public class CheckoutPage extends BasePage{
         Boolean status = util.elementIsSelected("CheckoutPage.deliveryOption", option);
         if(!status)
             util.clickElement("CheckoutPage.deliveryOption", option);
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     private void chooseAddressForLoginUser(String address){
@@ -108,7 +108,7 @@ public class CheckoutPage extends BasePage{
                 break;
         }
         util.clickElement("CheckoutPage.checkoutButtons", "payment-address");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     public void enterDeliveryDetailsForLoginUser(String option, String deliveryAddress){
@@ -123,7 +123,7 @@ public class CheckoutPage extends BasePage{
                 break;
         }
         util.clickElement("CheckoutPage.checkoutButtons", "shipping-address");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
 
@@ -139,7 +139,7 @@ public class CheckoutPage extends BasePage{
         CommonUtil util = new CommonUtil(driver);
         enterDeliverAddress(deliveryDetails);
         util.clickElement("CheckoutPage.checkoutButtons", "guest-shipping");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     private void enterDeliverAddress(String deliveryDetails){
@@ -164,7 +164,7 @@ public class CheckoutPage extends BasePage{
         CommonUtil util = new CommonUtil(driver);
         enterComments(deliveryComments);
         util.clickElement("CheckoutPage.checkoutButtons", "shipping-method");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     public void enterPaymentMethodWithAgreementOption(String option, Boolean agreement){
@@ -177,7 +177,7 @@ public class CheckoutPage extends BasePage{
         if((status==false && agreement==true) || (status==true && agreement==false))
             util.clickElement("CheckoutPage.paymentAgree");
         util.clickElement("CheckoutPage.checkoutButtons", "payment-method");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     public Boolean verifyWarningAlertForAgreement(){
@@ -189,7 +189,7 @@ public class CheckoutPage extends BasePage{
     public void confirmOrder(){
         CommonUtil util = new CommonUtil(driver);
         util.clickElement("CheckoutPage.checkoutButtons", "confirm");
-        addSleep(2000);
+        //addSleep(2000);
     }
 
     public Boolean verifyConfirmation(){

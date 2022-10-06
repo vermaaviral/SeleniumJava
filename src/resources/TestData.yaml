@@ -11,6 +11,7 @@ Test:
   existingAddress: "SavedFname SavedLname, SavedLine1, savedCity, Telangana, India"
   newBillingAddress: "Andy,Roddick,AddressLine,place2,222223,India,Telangana"
   deliveryInstruction: "Test Package"
+  quantity: "1"
 
 Prod:
   url: "https://naveenautomationlabs.com/opencart/"

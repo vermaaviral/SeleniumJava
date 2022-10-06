@@ -166,6 +166,7 @@ public class CommonUtil extends BasePage {
 
     public void sendKeysToElement(String path, String value){
         WebElement element = getElement(path);
+        wait.until(ExpectedConditions.visibilityOf(element));
         element.clear();
         element.sendKeys(value);
         addLog("pass", "Entered value as "+ value + " for " + path.split("\\.")[1] + " in " + path.split("\\.")[0] + " page");
@@ -173,6 +174,7 @@ public class CommonUtil extends BasePage {
 
     public void sendKeysToElement(String path, String value, String option){
         WebElement element = getElement(path,option);
+        wait.until(ExpectedConditions.visibilityOf(element));
         element.clear();
         element.sendKeys(value);
         addLog("pass", "Entered value as "+ value + " for " + option + " in " + path.split("\\.")[0] + " page");
@@ -180,6 +182,7 @@ public class CommonUtil extends BasePage {
 
     public void selectDropdown(String path, String value){
         WebElement element = getElement(path);
+        wait.until(ExpectedConditions.visibilityOf(element));
         Select s = new Select(element);
         s.selectByVisibleText(value);
         addLog("pass", "Select value "+ value + " from " + path.split("\\.")[1] + " dropdown in " + path.split("\\.")[0] + " page");
@@ -187,6 +190,7 @@ public class CommonUtil extends BasePage {
 
     public void selectDropdown(String path, String value, String option){
         WebElement element = getElement(path,option);
+        wait.until(ExpectedConditions.visibilityOf(element));
         Select s = new Select(element);
         s.selectByVisibleText(value);
         addLog("pass", "Select value "+ value + " from " + option + " dropdown in " + path.split("\\.")[0] + " page");
@@ -194,6 +198,7 @@ public class CommonUtil extends BasePage {
 
     public void selectDropdownWithSearchOption(String path, String value, String option){
         WebElement element = getElement(path,option);
+        wait.until(ExpectedConditions.visibilityOf(element));
         Select s = new Select(element);
         List<WebElement> elements = s.getOptions();
         for(WebElement e : elements){
@@ -209,6 +214,7 @@ public class CommonUtil extends BasePage {
 
     public void selectDropdownWithSearchOption(String path, String value){
         WebElement element = getElement(path);
+        wait.until(ExpectedConditions.visibilityOf(element));
         Select s = new Select(element);
         List<WebElement> elements = s.getOptions();
         for(WebElement e : elements){
