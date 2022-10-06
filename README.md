@@ -30,7 +30,7 @@ which generates a report at the end of test suite excluding the retried test cas
 | seleniumHub   | If using grid, then this variable needs to be set                   | http://localhost:4444/wd/hub |
 | env           | Test Data will be picked from file based on environment             | test           |
 | groups        | Tests tagged with matching value of this variable will get executed | Regression     |
-| browser       | Browser on which user desired to run test suite                     | chrome         |
+| browser       | Browser on which user desired to run test suite.(chrome/firefox supported currently)                     | chrome         |
 | threadCount   | To run TCs in parallel, provide value greater than 1 | 1 |
 
 ### Execution Commands:
